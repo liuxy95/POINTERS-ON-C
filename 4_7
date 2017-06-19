@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void deblank( char string[] )
+{
+    //char *ptr1=NULL;
+    char *ptr2=NULL;
+
+    //ptr1=string;
+    ptr2=string;
+
+    int i=0;
+    for( i=0;;i++)
+    {
+        //ptr1++;
+        //ptr2++;
+        if(string[i]=='\0')
+            break;
+
+        if(string[i]==' ')
+        {
+            if((i==0)||(string[i-1]!=' '))
+            {
+                *ptr2++=' ';
+            }
+        }
+        else
+        {
+           *ptr2++=string[i];
+        }
+    }
+    //ptr2++;
+    *ptr2='\0';
+}
+
+int main()
+{
+    //void deblank( char string[] )
+    char string_1[]="Hello                           world and fuck your     mother";
+    deblank(string_1);
+    printf("%s",string_1);
+    return 0;
+}
