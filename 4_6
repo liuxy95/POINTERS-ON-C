@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int substr( char dst[],char src[],int start,int len)
+{
+    char *p_dst=dst;
+    char *p_src=&src[start];
+    int dst_len=0;
+    int i=0;
+
+    int j=0;
+    for(j=0;;j++)
+    {
+        if(src[j]=='\0')
+            break;
+    }
+
+    while((*p_src!='\0')&&(i<len))
+    {
+        if((start<0)||(len<0)||(start>j))
+        {
+            dst_len=0;
+            break;
+        }
+        else
+        {
+            *p_dst++=*p_src++;
+            i++;
+            dst_len++;
+        }
+    }
+    //p_dst++;
+    *p_dst='\0';
+    return dst_len;
+}
+
+int main()
+{
+    char src[]="hello world and fuck you.";
+    char dst[100];
+    int lenth;
+    lenth=substr(dst,src,40,12);
+    printf("%s\n",dst);
+    printf("the lenth of dst is %d",lenth);
+    return 0;
+}
